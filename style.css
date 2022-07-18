@@ -16,9 +16,27 @@
 .clear {
 	clear: both;
 }
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+@keyframes fade-in-from-top {
+ 0% {
+    opacity: 0; /* opacity from begin of animation is 0 */
+    transform: translateY(-70px);/* descending from 50px */
+ }
+
+100%{
+    opacity: 1; /*opacity at end of animation is 1*/
+    transform: translateY(0px); /*no movement*/
+}
+}
+
 /*BASE STYLE*/
-body{
+.page{
   font-family: 'Cinzel', serif;
+  transition: all 0.2s;
   
 }
 
@@ -35,21 +53,57 @@ body h6{
   font-family:'Mulish', sans-serif;
 }
 
+.flex1 {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
 /******************************************
 /* Header
 /*******************************************/
 
-header{
-  text-align: center;
+
+.header{
+  display:flex;
+  justify-content: center;
 }
-header img{
-  float: left;
-  width: auto;
+.logo {
+  display:block;
+  max-width:76px;
+  max-height:50px;
+  width:auto;
+  height:auto;
+  margin-left: 0px;
+  padding-left:0px ;
+  margin-right: 20px;
+  animation: fade-in-from-top 0.5s;
 }
-nav li{
+
+
+.nav {
   display: inline-block;
-  margin: 1em 1em;
+  margin: .1em .1em;
 }
+
+.nav__list{
+  list-style: none;
+  display:flex;  
+}
+.nav__item{
+  animation: fade-in-from-top 0.5s;
+}
+
+.nav__link{
+padding: 0 20px; /*top bottom=0 left&right=20px spc between*/
+  transition: all 0.2s; /*state change on mouse over*/
+  /*height: 65px;*/
+  display: inline-block; 
+}
+.nav__link:hover,
+.nav__link:focus {
+  color: #aaaaaa;
+}
+
 nav li:last-child{
   float: right;
 }
@@ -66,21 +120,42 @@ nav li:last-child{
 /******************************************
 /* Buttons
 /*******************************************/
+.btn-read,
 .btn-white,
+.btn-services,
 .btn{
   border: 1px solid black;
   background-color: black;
   color: white;
   text-decoration: none;
   padding: 1em 1em;
+  transition: 0.2s;
+}
+
+  
+.btn-read:hover,
+.btn:hover{
+  background-color:#929292
+}
+.btn-services:hover,
+.btn-services:focus{
+  background-color: #ed719e;
+  
 }
 
 .btn-white{
   color: black;
   background-color: white;
+  transition: 0.2s;
 }
 
 
+.btn-center:hover,
+.btn-white:hover,
+.btn-white:focus{
+  background-color: #ed719e;
+  transition:0.3s;
+}
 
 /******************************************
 /* Main
@@ -92,10 +167,7 @@ main{
   background-position: center;
   background-size: cover;
   color: white;
-  position: relative;
-
-  
-  
+  position:relative; 
 }
 
 .visit{
@@ -114,7 +186,7 @@ main{
 
 }
 
-.visit h4{
+.visit h4{ /*Your First Visit*/
   font-size: 2em;
   margin-bottom: 25px;
   margin-top: 25px;
@@ -123,14 +195,12 @@ main{
 
 }
 
-
-
 main.clear section{
   margin: 0 10%;
   
 }
 
-main.clear section h1 {
+main.clear section h1 {/*Your Natural Hair Destination*/
 font-size: 4em;
 width: 40%;
 font-weight: 300;
@@ -172,11 +242,25 @@ main.clear a.btn-white{
     font-size: 2em;
   }
 
-  body{
+  .page{
     margin: 0px;
     padding: 0px;
   }
+  
+  .expert{
+    align-self
+  
+}
 
+  .quality{
+    
+  }
+
+  .beauty{
+    
+  }
+
+  
   .col1-3,
   .stylists.flex-grid{
     display: block ; 
@@ -369,6 +453,7 @@ section.mom.flex-grid img{
 
   section.clear.stylists.flex-grid{
     display: flex;
+    flex:1;  
   }
 
   .stylists section.col1-3 section{
@@ -412,16 +497,21 @@ img.lb-long{
   height: 60%;
   width: 100%;
   margin: 1em;
+  /*transition: all 0.2s;
+  animation: fade-in 1s;*/
 }
 
 img.lb-short{
   height: 30%;
   width: 100%;
   margin: 1em;
+ /* transition: all 0.2s;
+  animation: fade-in 1s;*/
 }
 
 .lookbook{
   margin: 3rem 15%;
+  flex:1;
 }
 
 .lookbook h2{
